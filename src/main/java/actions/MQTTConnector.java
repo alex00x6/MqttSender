@@ -21,7 +21,14 @@ public class MQTTConnector {
     public void mqttSubscribe(){
         String clientId = ThreadLocalRandom.current().nextInt(900, 900000 + 1)+"xe";
 
-        AWSIotMqttClient awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey, sessionToken);
+        AWSIotMqttClient awsIotClient;
+        if (sessionToken==null || sessionToken.equals("") || sessionToken.isEmpty()){
+            awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey);
+        }
+        else{
+            awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey, sessionToken);
+        }
+
         awsIotClient.setConnectionTimeout(openConnectionTimeMs);
         awsIotClient.setKeepAliveInterval(openConnectionTimeMs);
         awsIotClient.setMaxConnectionRetries(connectionRetries);
@@ -54,8 +61,13 @@ public class MQTTConnector {
 
     public void mqttPublish(){
         String clientId = ThreadLocalRandom.current().nextInt(900, 900000 + 1)+"Pe";
-
-        AWSIotMqttClient awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey, sessionToken);
+        AWSIotMqttClient awsIotClient;
+        if (sessionToken==null || sessionToken.equals("") || sessionToken.isEmpty()){
+            awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey);
+        }
+        else{
+            awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey, sessionToken);
+        }
         awsIotClient.setMaxConnectionRetries(connectionRetries);
 
         try {

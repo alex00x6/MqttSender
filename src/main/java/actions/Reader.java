@@ -31,7 +31,9 @@ public class Reader {
             properties.put("payload", prop.getProperty("payload"));
             properties.put("awsAccessKeyId", prop.getProperty("awsAccessKeyId"));
             properties.put("awsSecretAccessKey", prop.getProperty("awsSecretAccessKey"));
-            properties.put("sessionToken", prop.getProperty("sessionToken"));
+            if(prop.contains("sessionToken")) {
+                properties.put("sessionToken", prop.getProperty("sessionToken"));
+            }
 
 
 
