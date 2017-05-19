@@ -21,11 +21,24 @@ public class MQTTConnector {
     public void mqttSubscribe(){
         String clientId = ThreadLocalRandom.current().nextInt(900, 900000 + 1)+"xe";
 
+        System.out.println("=========================");
+        System.out.println(clientEndpoint);
+        System.out.println(topic);
+        System.out.println(payload);
+        System.out.println(awsAccessKeyId);
+        System.out.println(awsSecretAccessKey);
+        System.out.println(sessionToken);
+        System.out.println("=========================");
+
         AWSIotMqttClient awsIotClient;
         if (sessionToken==null || sessionToken.equals("") || sessionToken.isEmpty()){
+            System.out.println("Launching IoT client without session token.");
+            System.out.println("=========================");
             awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey);
         }
         else{
+            System.out.println("Launching IoT client using session token.");
+            System.out.println("=========================");
             awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey, sessionToken);
         }
 
@@ -61,11 +74,25 @@ public class MQTTConnector {
 
     public void mqttPublish(){
         String clientId = ThreadLocalRandom.current().nextInt(900, 900000 + 1)+"Pe";
+
+        System.out.println("=========================");
+        System.out.println(clientEndpoint);
+        System.out.println(topic);
+        System.out.println(payload);
+        System.out.println(awsAccessKeyId);
+        System.out.println(awsSecretAccessKey);
+        System.out.println(sessionToken);
+        System.out.println("=========================");
+
         AWSIotMqttClient awsIotClient;
         if (sessionToken==null || sessionToken.equals("") || sessionToken.isEmpty()){
+            System.out.println("Launching IoT client without session token.");
+            System.out.println("=========================");
             awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey);
         }
         else{
+            System.out.println("Launching IoT client using session token.");
+            System.out.println("=========================");
             awsIotClient = new AWSIotMqttClient(clientEndpoint, clientId, awsAccessKeyId, awsSecretAccessKey, sessionToken);
         }
         awsIotClient.setMaxConnectionRetries(connectionRetries);

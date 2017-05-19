@@ -8,6 +8,7 @@ import jar.Unpack;
  */
 public class Main {
     public static void main(String[] args) {
+        String[] args1 = {"-s"};
         Unpack unpack = new Unpack();
         unpack.unpackOnStart();
         Reader reader = new Reader();
@@ -16,7 +17,7 @@ public class Main {
         JCommander.newBuilder()
                 .addObject(argv)
                 .build()
-                .parse(args);
+                .parse(args1);
         argv.print();
         argv.proceed();
     }
