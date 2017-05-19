@@ -1,0 +1,9 @@
+.idea
+target
+*.iws
+*.iml
+*.ipr
+*.txt
+results/
+loadReports/*.log
+*.zip
